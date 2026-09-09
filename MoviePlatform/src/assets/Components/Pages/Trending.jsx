@@ -1,10 +1,28 @@
 import React from 'react'
 
-const Trending = () => {
+const SkeletonMovieCard = () => (
+    <div className="min-w-[140px] w-[140px]">
+        <div className="w-full h-40 bg-gray-700 rounded animate-pulse" />
+        <div className="h-3 bg-gray-700 rounded mt-2 w-3/4 animate-pulse" />
+    </div>
+)
+
+const MovieCard = ({movie}) => (
+    <div className="min-w-[140px] w-[140px]">
+        <img
+            src={movie?.poster_path ? `https://image.tmdb.org/t/p/w300${movie.poster_path}` : 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='}
+            alt={movie?.title || 'poster'}
+            className="w-full h-40 object-cover rounded"
+        />
+        <div className="text-sm text-gray-200 mt-2">{movie?.title || 'Untitled'}</div>
+    </div>
+)
+
+const Trending = ({movies = [] , isLoading} ) => {
   return (
    <div className="py-6 px-12 relative">
             <h2 className="text-white text-xl font-bold mb-4 tracking-wider uppercase">
-               Title
+                TRENDING NOW
             </h2>
 
             <div className="group relative">
@@ -15,12 +33,15 @@ const Trending = () => {
                 </button>
 
                 <div
-                  
-                    className="flex space-x-4 border border-white h-20 overflow-x-auto scrollbar-hide snap-x scroll-smooth pb-4"
+                    className="flex space-x-4  overflow-x-auto scrollbar-hide snap-x scroll-smooth pb-4"
                 >
-                    {/* {movies.map((movie) => (
-                        <MovieCard key={movie.id} movie={movie} />
-                    ))} */}
+                    {
+                        isLoading ?
+                            Array.from({ length: 14 }, (_, index) => <SkeletonMovieCard key={index} />) :
+                            movies.map((movie) => (
+                                <MovieCard key={movie.id} movie={movie} />
+                            ))
+                    }
                 </div>
 
                 <button

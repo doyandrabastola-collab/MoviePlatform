@@ -4,6 +4,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 import Navbar from './assets/Components/Navbar'
+import Home from './assets/Components/Pages/Home'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './assets/Components/Pages/Home'
 
@@ -14,7 +15,7 @@ function App() {
     <>
 
 
-<main className='h-dvh bg-[#030712] relative overflow-hidden text-white font-sans flex flex-col' >
+<main className='min-h-screen bg-[#030712] relative overflow-visible text-white font-sans flex flex-col' >
   <BrowserRouter>
   <Navbar/>
 
