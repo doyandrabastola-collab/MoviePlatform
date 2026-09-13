@@ -6,6 +6,8 @@ import './App.css'
 import Navbar from './assets/Components/Navbar'
 import Home from './assets/Components/Pages/Home'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { MovieDetails } from './assets/Components/MovieDetail'
+import MoviePlay from './assets/Components/MoviePlay'
 
 
 function App() {
@@ -23,7 +25,8 @@ function App() {
 
 <Routes>
   <Route path='/' element={<Home/>} />
-
+   <Route path='/movie/:id' element={<MovieDetails/>} />
+     <Route path='/movie/play/:id' element={<MoviePlay />} />
 </Routes>
 
 
